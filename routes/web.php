@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 /*******************/
 
 // welcome screen
-Route::get('/',[mainController::class,'welcome'])->name('welcome');
+// Route::get('/',[mainController::class,'welcome'])->name('welcome');
 // home screen
-Route::get('/home',[mainController::class,'index'])->name('home');
+Route::get('/',[mainController::class,'index'])->name('home');
 // terms screen
 Route::get('/terms',[mainController::class,'terms'])->name('terms');
 // privacy screen
