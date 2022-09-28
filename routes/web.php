@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Livewire\LoadMore;
 use App\Http\Controllers\Auth;
 use App\Http\Controllers\FAQsController;
 use App\Http\Controllers\mainController;
@@ -16,9 +16,9 @@ use Illuminate\Support\Facades\Route;
 /*******************/
 
 // welcome screen
-// Route::get('/',[mainController::class,'welcome'])->name('welcome');
+Route::get('/',[mainController::class,'welcome'])->name('welcome');
 // home screen
-Route::get('/',[mainController::class,'index'])->name('home');
+Route::get('/home',[mainController::class,'index'])->name('home');
 // terms screen
 Route::get('/terms',[mainController::class,'terms'])->name('terms');
 // privacy screen
@@ -36,8 +36,10 @@ Route::post('/login',[Auth::class,'login'])->name('Admin.login');
 Route::get('/dashboard',[Auth::class,'dashboard'])->name('Admin.dashboard');
 // logout user
 Route::get('/logout',[Auth::class,'logout'])->name('Admin.logout');
-// profile screen
-Route::get('/profile',[Auth::class,'profile'])->name('Admin.profile');
+// profile
+Route::resource('Auth', Auth::class);
+// change password
+Route::get('/change-password',[Auth::class,'changePassword'])->name('change-password');
 
 
 /*******************/
@@ -63,4 +65,11 @@ Route::resource('timeline', TimelineController::class);
 /*******************/
 
 // upload 
-// Route::post('upload',[Uploads::class,'store'])->name('upload');
+Route::post('/upload',[Uploads::class,'store'])->name('upload');
+
+/*******************/
+/* Other Routes    */ 
+/*******************/
+
+// load more
+// Route::get('/load-more', LoadMore::class)->name('load-more');

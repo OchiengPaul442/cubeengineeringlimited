@@ -7,9 +7,14 @@ use App\Models\service;
 use App\Http\Requests\StoreserviceRequest;
 use App\Http\Requests\UpdateserviceRequest;
 use App\Models\TemporaryFile;
+use App\Models\User;
+use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -27,8 +32,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        $title = 'Service Upload';
-        return view('Admin.pages.services', compact('title'));
+        $title = 'Service Upload-Cube Engineering and General supplies Limited';
+        $service = service::all();
+        $services = service::all();
+        return view('Admin.pages.services', compact('title', 'service', 'services'));
     }
 
     /**
@@ -43,36 +50,40 @@ class ServiceController extends Controller
             'name' => 'required|max:55',
             'description' => 'required|max:255',
             'details' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:2000|file'
         ]);
 
+        // get all data from database
         $service = new service;
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'service' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
-        $service['image'] = $new_name;
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
 
-        // updating the news data in database
         $service->name = $request->name;
         $service->description = $request->description;
         $service->details = $request->details;
-        // timestamps update
-        $service->updated_at = now();
 
-        // upate the data
-        $result = $service->save();
-
-        // error checks
-        if ($result) {
-            return redirect()->back()->with('success', 'Service updated successfully.');
-            // return response()->json(['success' => 'Service updated successfully.']);
-        } else {
-            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
-            // return response()->json(['error' => 'Something went wrong, try again later.']);
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'service' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $service->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
         }
 
+        // save all data to database 
+        $result = $service->save();
+
+        if ($result) {
+            return redirect()->back()->with('success', 'Service uploaded successfully.');
+        } else {
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
+        }
     }
 
     /**
@@ -83,7 +94,7 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
-        $title = 'Services-Cube Engineering and supplies ltd';
+        $title = 'Services-Cube Engineering and General supplies Limited';
         $service = service::find($id);
         $otheritems = service::all();
         $FAQs = FAQs::all();
@@ -98,9 +109,10 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Edit Service-Cube Engineering and supplies ltd';
+        $title = 'Edit Service-Cube Engineering and General supplies Limited';
         $service = service::find($id);
-        return view('Admin.pages.services', compact('title', 'service'));
+        $services = service::all();
+        return view('Admin.pages.services', compact('title', 'service', 'services'));
     }
 
     /**
@@ -116,34 +128,38 @@ class ServiceController extends Controller
             'name' => 'required|max:55',
             'description' => 'required|max:255',
             'details' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:2000|file'
         ]);
 
         $service = service::find($id);
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'service' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
-        $service['image'] = $new_name;
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
 
-        // updating the news data in database
         $service->name = $request->name;
         $service->description = $request->description;
         $service->details = $request->details;
-        // timestamps update
-        $service->updated_at = now();
 
-        // upate the data
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'service' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $service->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
+        }
+
+        // save all data to database 
         $result = $service->save();
 
-        // error checks
         if ($result) {
-            return redirect()->back()->with('success', 'Service updated successfully.');
-            // return response()->json(['success' => 'Service updated successfully.']);
+            return redirect()->route('services.create')->with('success', 'Service updated successfully.');
         } else {
             return redirect()->back()->with('fail', 'Something went wrong, try again later.');
-            // return response()->json(['error' => 'Something went wrong, try again later.']);
         }
     }
 
@@ -160,11 +176,9 @@ class ServiceController extends Controller
 
         // error checks
         if ($result) {
-            // return redirect()->back()->with('success', 'Service deleted successfully.');
-            return response()->json(['success' => 'Service deleted successfully.']);
+            return redirect()->back()->with('success', 'Service deleted successfully.');
         } else {
-            // return redirect()->back()->with('fail', 'Something went wrong, try again later.');
-            return response()->json(['error' => 'Something went wrong, try again later.']);
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 }

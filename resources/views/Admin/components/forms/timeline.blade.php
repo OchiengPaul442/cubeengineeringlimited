@@ -23,15 +23,11 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="mb-3">
-        <div class="input-group mb-3">
-            <input type="file" class="form-control" name="image" id="image">
-            <label class="input-group-text" for="image">Upload</label>
-        </div>
-        @error('image')
-            <div class="text-danger">{{ $message }}</div>
-        @enderror
+    <div class="mb-3">        
+        <label class="mb-2">Image Upload</label>
+        <input type="file" class="" name="image" id="timelineimage">
     </div>
+
 
     @if (Request::is('timeline/*/edit'))
         <button type="submit" class="btn btn-success">Update timeline</button>

@@ -42,7 +42,7 @@
                 </nav>
             </div>
             <div class="sb-sidenav-menu-heading">Account</div>
-            <a class="nav-link" href="{{ route('Admin.profile') }}">
+            <a class="nav-link" href="{{ route('Auth.show',session('userID')) }}">
                 <div class="sb-nav-link-icon">
                     <x-carbon-user-admin style="width: 18px" />
                 </div>

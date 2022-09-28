@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\testimonial;
 use App\Http\Requests\StoretestimonialRequest;
 use App\Http\Requests\UpdatetestimonialRequest;
+use App\Models\TemporaryFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TestimonialController extends Controller
 {
@@ -25,8 +28,10 @@ class TestimonialController extends Controller
      */
     public function create()
     {
-        $title = 'Testimonials Upload-Cube Engineering and supplies ltd';
-        return view('Admin.pages.testimonials', compact('title'));
+        $title = 'Testimonials Upload-Cube Engineering and General supplies Limited';
+        $testimonial = testimonial::all();
+        $testimonials = testimonial::all();
+        return view('Admin.pages.testimonials', compact('title','testimonial','testimonials'));
     }
 
     /**
@@ -37,35 +42,44 @@ class TestimonialController extends Controller
      */
     public function store(StoretestimonialRequest $request)
     {
-        
+
         $request->validate([
             'name' => 'required|max:55',
             'occupation' => 'required|max:255',
             'comments' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'testimonial' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
-    
-        // creating new object for news
-        $testimonial = new Testimonial;
+        // get all data from database
+        $testimonial = new testimonial;
 
-        // saving the news data in database
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+
         $testimonial->name = $request->name;
         $testimonial->occupation = $request->occupation;
         $testimonial->comments = $request->comments;
-        $testimonial->image = $new_name;
 
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'testimonial' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $testimonial->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
+        }
+
+        // save all data to database 
         $result = $testimonial->save();
 
-        // error checks
         if ($result) {
-            return redirect()->route('testimonials.create')->with('success', 'Testimonial added successfully.');
+            return redirect()->route('testimonials.create')->with('success', 'testimonial uploaded successfully.');
         } else {
-            return redirect()->route('testimonials.create')->with('fail', 'Something went wrong, try again later.');
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 
@@ -88,9 +102,10 @@ class TestimonialController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Edit Testimonials-Cube Engineering and supplies ltd';
+        $title = 'Edit Testimonials-Cube Engineering and General supplies Limited';
         $Testimonial = Testimonial::find($id);
-        return view('Admin.pages.testimonials', compact('title', 'Testimonial'));
+        $testimonials = testimonial::all();
+        return view('Admin.pages.testimonials', compact('title', 'Testimonial','testimonials'));
     }
 
     /**
@@ -106,30 +121,36 @@ class TestimonialController extends Controller
             'name' => 'required|max:55',
             'occupation' => 'required|max:255',
             'comments' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $testimonial = Testimonial::find($id);
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'testimonial' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
-    
-        // updating the news data in database
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+
         $testimonial->name = $request->name;
         $testimonial->occupation = $request->occupation;
         $testimonial->comments = $request->comments;
-        $testimonial->image = $new_name;
-        // timestamps update
-        $testimonial->updated_at = now();
 
-        // upate the data
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'testimonial' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $testimonial->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
+        }
+
+        // save all data to database 
         $result = $testimonial->save();
 
-        // error checks
         if ($result) {
-            return redirect()->back()->with('success', 'Testimonial updated successfully.');
+            return redirect()->route('testimonials.create')->with('success', 'testimonial uploaded successfully.');
         } else {
             return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }

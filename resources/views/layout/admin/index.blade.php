@@ -1,3 +1,10 @@
+@php
+    if(!session()->has('userID')){
+        header('Location: /login');
+        exit;
+    }
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +16,7 @@
     <title>{{ $title }}</title>
     {{-- favicon --}}
     <link rel="shortcut icon" href="{{ asset('images/Group1.png') }}" type="image/x-icon">
-    <link href="{{ asset('/css/admin.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin.min.css') }}" rel="stylesheet" />
     {{-- filepond --}}
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     {{-- bootstrap css --}}
@@ -39,7 +46,8 @@
         </div>
     </div>
     {{-- error modal --}}
-    @include('components.modals.errors')
+    @include('Admin.components.modals.errors')
+    @include('Admin.components.modals.others')
 
     <script src="{{ asset('/js/admin.js') }}"></script>
     {{-- datatables js --}}
@@ -47,7 +55,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     {{-- filepond plugin --}}
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+        {{-- ckeditor --}}
+    <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
+    {{-- chart js --}}    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @yield('scripts')
+    @yield('scripts2')
 </body>
 
 </html>

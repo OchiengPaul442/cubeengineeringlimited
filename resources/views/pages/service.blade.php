@@ -10,7 +10,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         type="text/css">
     <link rel="stylesheet" href="{{ asset('/css/app.min.css') }}" type="text/css">
-    {{-- <link rel="stylesheet" href="{{ asset('/css/app.css') }}" type="text/css"> --}}
     {{-- lib css --}}
     <link rel="stylesheet" href="{{ asset('lib/flaticon/font/flaticon.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}" type="text/css">
@@ -23,6 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <title>{{ $title }}</title>
+    @livewireStyles
 </head>
 
 <body>
@@ -50,9 +50,9 @@
             <div class="container w-100 service-details">
                 <h1>{{ $service->name }}</h1>
                 <span>Details</span>
-                <p>
-                    {{ $service->details }}
-                </p>
+                <div>
+                    {!! $service->details !!}
+                </div>
             </div>
         </section>
         {{-- end of service descriptions --}}
@@ -64,21 +64,7 @@
                     <p>Our Services</p>
                     <h2>We Provide Services</h2>
                 </div>
-                <div class="row d-flex gap-4 justify-content-around flex-wrap">
-                    @foreach ($otheritems as $otheritem)
-                        @if ($otheritem->id != $service->id)
-                            <div class="service-card">
-                                <input type="hidden" value="{{ $otheritem->id }}">
-                                <img src="{{ asset('storage/images/' . $otheritem->image) }}" alt="">
-                                <div class="service-card-content">
-                                    <h2 class="service-card-title text-capitalize">{{ $otheritem->name }}</h2>
-                                    <a href="{{ route('services.show', $otheritem->id) }}" class="serivce-button">Learn
-                                        More</a>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
-                </div>
+                <livewire:load-more>
             </div>
         </section>
         {{-- end of other services --}}
@@ -222,6 +208,7 @@
     <script src="{{ asset('/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('/lib/slick/slick.min.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

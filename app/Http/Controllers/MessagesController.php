@@ -15,7 +15,7 @@ class MessagesController extends Controller
      */
     public function index()
     {
-        $title = 'Messages-Cube Engineering and supplies ltd';
+        $title = 'Mail Edit-Cube Engineering and General supplies Limited';
         $messages = messages::all();
         return view('Admin.pages.messages', compact('title', 'messages'));
     }
@@ -66,9 +66,12 @@ class MessagesController extends Controller
      * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function show(messages $messages)
+    public function show($id)
     {
-        //
+        $title = 'Mail Edit-Cube Engineering and General supplies Limited';
+        $message = messages::find($id);
+        $messages = messages::all();
+        return view('Admin.pages.messages', compact('title', 'message', 'messages'));       
     }
 
     /**
@@ -100,8 +103,10 @@ class MessagesController extends Controller
      * @param  \App\Models\messages  $messages
      * @return \Illuminate\Http\Response
      */
-    public function destroy(messages $messages)
+    public function destroy($id)
     {
-        //
+        $message = messages::find($id);
+        $message->delete();
+        return redirect()->back()->with('success', 'Message deleted successfully!');
     }
 }

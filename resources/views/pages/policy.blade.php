@@ -11,7 +11,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         type="text/css">
         <link rel="stylesheet" href="{{ asset('/css/app.min.css') }}" type="text/css">
-    {{-- <link rel="stylesheet" href="{{ asset('/css/app.css') }}" type="text/css"> --}}
     {{-- lib css --}}
     <link rel="stylesheet" href="{{ asset('lib/flaticon/font/flaticon.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}" type="text/css">
@@ -371,7 +370,8 @@
 
     {{-- js links --}}
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>    
+    <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
 </body>
 </body>
 

@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\timeline;
 use App\Http\Requests\StoretimelineRequest;
 use App\Http\Requests\UpdatetimelineRequest;
+use App\Models\TemporaryFile;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Storage;
 
 class TimelineController extends Controller
 {
@@ -25,10 +28,11 @@ class TimelineController extends Controller
      */
     public function create()
     {
-        $title = 'Timeline Upload-Cube Engineering and supplies ltd';
+        $title = 'Timeline Upload-Cube Engineering and General supplies Limited';
         // get all the data
         $timeline = timeline::all();
-        return view('Admin.pages.timeline', compact('title', 'timeline'));
+        $timelines = timeline::all();
+        return view('Admin.pages.timeline', compact('title', 'timeline','timelines'));
     }
 
     /**
@@ -42,28 +46,38 @@ class TimelineController extends Controller
         $request->validate([
             'quote' => 'required|max:70',
             'title' => 'required|max:55',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'timeline' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
+        // get all data from database
+        $timeline = new timeline;
 
-        // creating new object for timeline
-        $timeline = new Timeline;
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
 
-        // saving the timeline data in database
         $timeline->quote = $request->quote;
         $timeline->title = $request->title;
-        $timeline->image = $new_name;
 
-        $results = $timeline->save();
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'timeline' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $timeline->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
+        }
 
-        if ($results) {
-            return redirect()->back()->with('success', 'Timeline has been added successfully');
+        // save all data to database 
+        $result = $timeline->save();
+
+        if ($result) {
+            return redirect()->route('timeline.create')->with('success', 'timeline uploaded successfully.');
         } else {
-            return redirect()->back()->with('error', 'Timeline has not been added');
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 
@@ -86,9 +100,10 @@ class TimelineController extends Controller
      */
     public function edit($id)
     {
-        $title = 'Timeline Edit-Cube Engineering and supplies ltd';
+        $title = 'Timeline Edit-Cube Engineering and General supplies Limited';
         $timeline = Timeline::find($id);
-        return view('Admin.pages.timeline', compact('title', 'timeline'));
+        $timelines = timeline::all();
+        return view('Admin.pages.timeline', compact('title', 'timeline','timelines'));
     }
 
     /**
@@ -103,27 +118,38 @@ class TimelineController extends Controller
         $request->validate([
             'quote' => 'required|max:255',
             'title' => 'required|max:255',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $destinationPath = 'public/images';
-        $image = $request->file('image');
-        $new_name =  'timeline' . '.' . time() . '.' . $image->getClientOriginalName();
-        $image->storeAs($destinationPath, $new_name);
-
-        // creating new object for news
+        // get all data from database
         $timeline = timeline::find($id);
 
-        // saving the news data in database
+        // capture the file from the temporary table
+        $temporaryFile = TemporaryFile::where('filename', $request->image)->first();
+       
         $timeline->quote = $request->quote;
         $timeline->title = $request->title;
-        $timeline->image = $new_name;
-        $results = $timeline->save();
+        
+        // if file exists 
+        if ($temporaryFile) {
+            // new file name
+            $new_name =  'timeline' . '.' . time() . '.' . $temporaryFile->filename;
+            //  save file to database
+            $timeline->image = $new_name;
+            // move the file from the temporary folder to the permanent folder
+            Storage::move('public/uploads/' . $temporaryFile->folder . '/' . $temporaryFile->filename, 'public/images/' . $new_name);
+            // delete the temporary folder
+            $directory = 'app/public/uploads/' . $temporaryFile->folder; // get the folder name
+            File::deleteDirectory(storage_path($directory)); // delete the folder
+            $temporaryFile->delete(); // delete the file from the temporary table
+        }
 
-        if ($results) {
-            return redirect()->route('timeline.create')->with('success', 'Timeline Updated Successfully');
+        // save all data to database 
+        $result = $timeline->save();
+
+        if ($result) {
+            return redirect()->route('timeline.create')->with('success', 'timeline updated successfully.');
         } else {
-            return redirect()->route('timeline.create')->with('error', 'Timeline Update Failed');
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 

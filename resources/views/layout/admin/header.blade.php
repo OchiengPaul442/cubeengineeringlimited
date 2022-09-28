@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="d-flex">
             {{-- logo --}}
-            <a class="navbar-brand ps-3" href="#">Cubeex Admin Panel</a>
+            <a class="navbar-brand ps-3" href="#">Cube Admin Panel</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><x-carbon-list style="width: 20px" />
             </button>
@@ -13,7 +13,7 @@
                     data-bs-toggle="dropdown" aria-expanded="false"><x-carbon-user-filled style="width: 20px"/>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="{{ route('Admin.profile') }}">Settings</a></li>
+                    <li><a class="dropdown-item" href="{{ route('Auth.show',session('userID')) }}">Settings</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>

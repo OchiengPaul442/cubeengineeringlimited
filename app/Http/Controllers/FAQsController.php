@@ -25,8 +25,10 @@ class FAQsController extends Controller
      */
     public function create()
     {
-        $title = 'FAQs Upload-Cube Engineering and supplies ltd';
-        return view('Admin.pages.FAQs', compact('title'));
+        $title = 'FAQs Upload-Cube Engineering and General supplies Limited';
+        $FAQs = FAQs::all();
+        $FAQ = FAQs::all();
+        return view('Admin.pages.FAQs', compact('title', 'FAQs', 'FAQ'));
     }
 
     /**
@@ -78,9 +80,10 @@ class FAQsController extends Controller
      */
     public function edit($id)
     {
-        $title = 'FAQs Edit-Cube Engineering and supplies ltd';
-        $FAQs = FAQs::find($id);
-        return view('Admin.pages.FAQs', compact('title', 'FAQs'));
+        $title = 'FAQs Edit-Cube Engineering and General supplies Limited';
+        $FAQ = FAQs::find($id);
+        $FAQs = FAQs::all();
+        return view('Admin.pages.FAQs', compact('title', 'FAQs', 'FAQ'));
     }
 
     /**
@@ -110,7 +113,7 @@ class FAQsController extends Controller
         if ($result) {
             return redirect()->route('FAQs.create')->with('success', 'Question and answer updated successfully.');
         } else {
-            return redirect()->route('FAQs.create')->with('fail', 'Something went wrong, try again later.');
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 
@@ -127,9 +130,9 @@ class FAQsController extends Controller
 
         // error checks
         if ($result) {
-            return redirect()->route('Admin.dashboard')->with('success', 'Question and answer deleted successfully.');
+            return redirect()->back()->with('success', 'Question and answer deleted successfully.');
         } else {
-            return redirect()->route('Admin.dashboard')->with('fail', 'Something went wrong, try again later.');
+            return redirect()->back()->with('fail', 'Something went wrong, try again later.');
         }
     }
 }

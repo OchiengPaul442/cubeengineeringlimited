@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{$title}}</title>
-    <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
+    <title>{{ $title }}</title>
+    <link href="{{ asset('css/admin.min.css') }}" rel="stylesheet" />
     <link rel="shortcut icon" href="{{ asset('images/Group1.png') }}" type="image/x-icon">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -17,6 +17,16 @@
         <div id="layoutAuthentication_content">
             <main>
                 <div class="container">
+                    {{-- display success message --}}
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @elseif (session('fail'))
+                        <div class="alert alert-danger">
+                            {{ session('fail') }}
+                        </div>
+                    @endif
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
@@ -66,7 +76,7 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
-    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

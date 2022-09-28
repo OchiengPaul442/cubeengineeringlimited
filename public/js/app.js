@@ -160,7 +160,7 @@ function validation() {
                 $("#notification").modal("show");
                 setTimeout(function () {
                     $("#notification").modal("hide");
-                }, 2000);
+                }, 3500);
             },
             error: function (response) {
                 // get error messages

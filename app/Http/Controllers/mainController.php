@@ -12,35 +12,35 @@ use Illuminate\Http\Request;
 
 class mainController extends Controller
 {    
+    public $page_number = 6;
     // index page
     public function welcome()
     {
-        $title = 'Cube Engineering and supplies ltd';
+        $title = 'Cube Engineering and General supplies Limited';
         return view('index', compact('title'));
     }
     // home page
     public function index()
     {
-        $title = 'Cube Engineering and supplies ltd';
+        $title = 'Cube Engineering and General supplies Limited';
         // get all data
-        $services = service::all();
-        $portfolio = Portfolio::all();
+        $portfolio = portfolio::orderBy('id', 'ASC')->paginate($this->page_number);
         $FAQs = FAQs::all();
         $testimonials = Testimonial::all();
         $timeline = timeline::all();
-        return view('pages.Home', compact('title', 'services', 'portfolio', 'FAQs', 'testimonials', 'timeline'));
+        return view('layout.site.app', compact('title', 'portfolio', 'FAQs', 'testimonials', 'timeline'));
     }
     // terms page
     public function terms()
     {
-        $title = 'Terms-Cube Engineering and supplies ltd';
+        $title = 'Terms-Cube Engineering and General supplies Limited';
         $heading = 'Terms';
         return view('pages.term',compact('heading','title'));
     }
     // privacy page
     public function privacy()
     {
-        $title = 'Privacy-Cube Engineering and supplies ltd';
+        $title = 'Privacy-Cube Engineering and General supplies Limited';
         $heading = 'Privacy';
         return view('pages.policy',compact('heading','title'));
     }
