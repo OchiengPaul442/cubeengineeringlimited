@@ -91,7 +91,7 @@
 
         .centerer {
             width: 100%;
-            max-width: 600px;
+            /* max-width: 600px; */
             /* margin: 0 auto;
             padding: 0 1rem; */
         }
@@ -284,7 +284,7 @@
         <div class="hero-text">
             <img src="{{ asset('images/Group1.png') }}" class="fostrap-logo" width="100px" alt="">
             <h3>Welcome to</h3>
-            <h1>CUBE ENGINEERING <br> AND SUPPLIES LTD</h1>
+            <h1>CUBE ENGINEERING <br> AND GENERAL SUPPLIES LTD</h1>
             <div class="centerer">
                 <div class="wrap">
                     <a class="btn-5" href="{{ route('home') }}">Visit Us</a>

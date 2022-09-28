@@ -16,7 +16,7 @@
     <title>{{ $title }}</title>
     {{-- favicon --}}
     <link rel="shortcut icon" href="{{ asset('images/Group1.png') }}" type="image/x-icon">
-    <link href="{{ asset('css/admin.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin.css) }}" rel="stylesheet" />
     {{-- filepond --}}
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     {{-- bootstrap css --}}
