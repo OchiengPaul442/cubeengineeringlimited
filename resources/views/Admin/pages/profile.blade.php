@@ -56,8 +56,8 @@
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush h-100">
-                                            <li class="list-group-item h-50"><a href="{{ route('portfolio.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-success postion-relative"><span class="fs-2">Projects</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{session('portfolio')->count()}}</span></a></li>
-                                            <li class="list-group-item h-50"><a href="{{ route('messages.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-danger postion-relative"><span class="fs-2">Mail</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{session('messages')->count()}}</span></a></li>
+                                            <li class="list-group-item h-50"><a href="{{ route('portfolio.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-success postion-relative"><span class="fs-2">Projects</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{$portfolio->count()}}</span></a></li>
+                                            <li class="list-group-item h-50"><a href="{{ route('messages.index') }}" class="h-100 w-100 d-flex justify-content-between btn btn-danger postion-relative"><span class="fs-2">Mail</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{$messages->count()}}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -66,9 +66,9 @@
                                 <div class="card h-100">
                                     <div class="card-body">
                                         <ul class="list-group list-group-flush h-100">
-                                            <li class="list-group-item h-50"><a href="{{ route('testimonials.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-warning postion-relative"><span class="fs-2">Testimonials</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{session('testimonials')->count()}}</span></a></li>
-                                            <li class="list-group-item h-50"><a href="{{ route('services.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-secondary postion-relative"><span class="fs-2">Services</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{session('services')->count()}}</span></a></li>
-                                            <li class="list-group-item h-50"><a href="{{ route('FAQs.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-dark postion-relative"><span class="fs-2">FAQs</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{session('FAQs')->count()}}</span></a></li>
+                                            <li class="list-group-item h-50"><a href="{{ route('testimonials.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-warning postion-relative"><span class="fs-2">Testimonials</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{$testimonial->count()}}</span></a></li>
+                                            <li class="list-group-item h-50"><a href="{{ route('services.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-secondary postion-relative"><span class="fs-2">Services</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{$service->count()}}</span></a></li>
+                                            <li class="list-group-item h-50"><a href="{{ route('FAQs.create') }}" class="h-100 w-100 d-flex justify-content-between btn btn-dark postion-relative"><span class="fs-2">FAQs</span><span class="fs-3 position-absolute" style="bottom: 15px;right:35px">{{$FAQs->count()}}</span></a></li>
                                         </ul>
                                     </div>
                                 </div>

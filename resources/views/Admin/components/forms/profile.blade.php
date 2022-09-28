@@ -82,7 +82,7 @@
                     <div class="">
                         <button class="btn btn-success " type="submit" href="">save
                             changes</button>
-                        <button class="btn btn-secondary" href="{{ route('Auth.show', $user->id) }}">No</button>
+                        <a class="btn btn-secondary" href="{{ route('Auth.show', $user->id) }}">No</a>
                     </div>
                 </div>
             @else

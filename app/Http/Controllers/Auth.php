@@ -73,8 +73,8 @@ class Auth extends Controller
             $oct = $messages->where('created_at', '>=', '2021-10-01')->count();
             $nov = $messages->where('created_at', '>=', '2021-11-01')->count();
             $dec = $messages->where('created_at', '>=', '2021-12-01')->count();
-                    
-            return view('Admin.pages.Dashboard', compact('title','service','FAQs','portfolio','testimonial','messages','completed','running','upcoming','jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'));
+
+            return view('Admin.pages.Dashboard', compact('title', 'service', 'FAQs', 'portfolio', 'testimonial', 'messages', 'completed', 'running', 'upcoming', 'jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'));
         } else {
             return redirect()->route('Admin.login');
         }
@@ -157,7 +157,12 @@ class Auth extends Controller
     {
         $title = 'User Profile';
         $user = User::where('id', $id)->first();
-        return view('Admin.pages.profile', compact('title', 'user'));
+        $service = service::all();
+        $FAQs = FAQs::all();
+        $portfolio = portfolio::all();
+        $testimonial = testimonial::all();
+        $messages = messages::all();
+        return view('Admin.pages.profile', compact('title', 'user', 'service', 'FAQs', 'portfolio', 'testimonial', 'messages'));
     }
 
     /**
