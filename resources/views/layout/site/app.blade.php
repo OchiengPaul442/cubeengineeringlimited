@@ -132,9 +132,9 @@
                         {{-- Begin Tab side --}}
                         <div class="Tabside">
                             <ul>
-                                <li><a href="#" class="tabLink activeLink" id="cont-1">Mission</a></li>
-                                <li><a href="#" class="tabLink" id="cont-2">vision</a></li>
-                                <li><a href="#" class="tabLink" id="cont-3">Values</a></li>
+                                <li><a href="#" class="text-dark tabLink activeLink" id="cont-1">Mission</a></li>
+                                <li><a href="#" class="text-dark tabLink" id="cont-2">vision</a></li>
+                                <li><a href="#" class="text-dark tabLink" id="cont-3">Values</a></li>
                             </ul>
                             <div class="clear"></div>
                             <div class="tabcontent" id="cont-1-1">
