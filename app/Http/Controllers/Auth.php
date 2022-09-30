@@ -60,8 +60,8 @@ class Auth extends Controller
             $running = $portfolio->where('status', 'Running')->count();
             $upcoming = $portfolio->where('status', 'Upcoming')->count();
 
-            // messages per month
-            $jan = $messages->where('created_at', '>=', '2021-01-01')->count();
+            // get total messages per month from jan to dec
+            $jan = $messages->where('created_at', '>=', '2021-01-01')->count();          
             $feb = $messages->where('created_at', '>=', '2021-02-01')->count();
             $mar = $messages->where('created_at', '>=', '2021-03-01')->count();
             $apr = $messages->where('created_at', '>=', '2021-04-01')->count();
@@ -175,7 +175,12 @@ class Auth extends Controller
     {
         $title = 'Edit Profile';
         $user = User::where('id', $id)->first();
-        return view('Admin.pages.profile', compact('title', 'user'));
+        $service = service::all();
+        $FAQs = FAQs::all();
+        $portfolio = portfolio::all();
+        $testimonial = testimonial::all();
+        $messages = messages::all();
+        return view('Admin.pages.profile', compact('title', 'user', 'service', 'FAQs', 'portfolio', 'testimonial', 'messages'));
     }
 
     /**

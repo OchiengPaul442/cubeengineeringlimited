@@ -2,7 +2,9 @@
 
 @section('content')
     {{-- testimonials section --}}
-    <div class="container-fluid mt-4 px-4">
+    <div class="container-fluid mt-4 px-4">        
+        {{-- notification --}}
+        @include('Admin.components.errors.notifications')
         <div class="text-success fs-1 mb-2 text-capitalize">Testimonials data</div>
         <div class="card mb-4">
             <div class="card-header">
@@ -42,12 +44,7 @@
                                             <li><a href="{{ route('testimonials.edit', $testimonial->id) }}"
                                                     class="dropdown-item">Edit</a></li>
                                             <li>
-                                                <form action="{{ route('testimonials.destroy', $testimonial->id) }}"
-                                                    class="w-100" method="POST" style="display: inline-block">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item">Delete</button>
-                                                </form>
+                                                <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteRecord">Delete</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -60,8 +57,6 @@
         </div>
     </div>
     <div class="container-fluid mt-4 px-4">
-        {{-- notification --}}
-        @include('Admin.components.errors.notifications')
         <div class="text-success fs-1">Upload customer testimonials for site!</div>
         @include('Admin.components.forms.testimonials')
     </div>

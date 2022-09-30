@@ -70,6 +70,3 @@ Route::post('/upload',[Uploads::class,'store'])->name('upload');
 /*******************/
 /* Other Routes    */ 
 /*******************/
-
-// load more
-// Route::get('/load-more', LoadMore::class)->name('load-more');

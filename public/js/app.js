@@ -113,16 +113,6 @@ function testimonials() {
         items: 1,
         loop: true,
     });
-
-    $(".floating-call-btn").hide();
-    /* floating call button show on scoll*/
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 150) {
-            $(".floating-call-btn").fadeIn();
-        } else {
-            $(".floating-call-btn").fadeOut();
-        }
-    });
 }
 
 // form validations using ajax
@@ -174,7 +164,14 @@ function validation() {
 
 $(document).ready(function () {
     // Initiate the wowjs
-    new WOW().init();
+    wow = new WOW({
+        boxClass: "wow", // default
+        animateClass: "animated", // default
+        offset: 0, // default
+        mobile: false, // default
+        live: true, // default
+    });
+    wow.init();
 
     $(window).scrollTop(0);
 
@@ -207,11 +204,21 @@ $(document).ready(function () {
         $("html, body").animate({ scrollTop: 0 }, 1000);
     });
 
+    $(".floating-call-btn").hide();
+    /* floating call button show on scoll*/
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 150) {
+            $(".floating-call-btn").fadeIn();
+        } else {
+            $(".floating-call-btn").fadeOut();
+        }
+    });
+
     // call functions
     navBar();
-    counterUp();
     about();
     timeline();
     testimonials();
+    counterUp();
     validation();
 });

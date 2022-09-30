@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6KEWR7KK8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D6KEWR7KK8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -49,13 +61,13 @@
         </div>
 
         {{-- main content --}}
-        <div class="main_content">
+        <div class="main_content container">
             <h2><strong>Terms and Conditions</strong></h2>
 
             <p>Welcome to Cube Engineering!</p>
 
             <p>These terms and conditions outline the rules and regulations for the use of Cube Engineering's Website,
-                located at http://robex-co.herokuapp.com.</p>
+                located at https://cubeengineeringltd.com</p>
 
             <p>By accessing this website we assume you accept these terms and conditions. Do not continue to use Cube
                 Engineering if you do not agree to take all of the terms and conditions stated on this page.</p>
@@ -249,7 +261,7 @@
 
     {{-- js links --}}
     <script src="{{ asset('/js/app.js') }}"></script>
-    <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>    
+    <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
 </body>
 

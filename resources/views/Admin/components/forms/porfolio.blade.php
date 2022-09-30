@@ -35,7 +35,7 @@
         <label for="description" class="form-label">Brief Description</label>
         <textarea class="form-control" id="description" name="about">
             @if (Request::is('portfolio/*/edit'))
-{{ $portfolio->about }}
+{!! $portfolio->about !!}
 @endif
         </textarea>
         @error('description')
@@ -47,7 +47,10 @@
         <input type="file" class="form-control" name="image" id="portfolioimage">
     </div>
     @if (Request::is('portfolio/*/edit'))
-        <button type="submit" class="btn btn-success">Update portfolio</button>
+    <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-success">Update portfolio</button>
+            <a href="{{route('portfolio.create')}}" class="btn btn-secondary">Undo</a>
+        </div>
     @else
         <button type="submit" class="btn btn-primary">Upload portfolio</button>
     @endif

@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6KEWR7KK8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D6KEWR7KK8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -101,11 +113,13 @@
                                 </div>
                                 <div class="about-text">
                                     <p>
-                                        Cube Engineering and General Supplies Ltd is a multi-disciplinary engineering firm
+                                        Cube Engineering and General Supplies Ltd is a multi-disciplinary engineering
+                                        firm
                                         duly
                                         registered as a limited Company with an aim to provide quality services in the
                                         industry.
-                                        Cube Engineering was founded on 7th March 2021 and incorporated on 14th July 2021 in
+                                        Cube Engineering was founded on 7th March 2021 and incorporated on 14th July
+                                        2021 in
                                         Kampala
                                         Uganda.
                                         <br>
@@ -115,8 +129,10 @@
                                         overhauls to
                                         turn key project management, implementation and Execution. Cube Engineering’s
                                         expertise
-                                        has been developed from former employees of different organizations who have been
-                                        involved in execution of number of construction, mechanical and electrical projects.
+                                        has been developed from former employees of different organizations who have
+                                        been
+                                        involved in execution of number of construction, mechanical and electrical
+                                        projects.
                                     </p>
                                 </div>
                             </div>
@@ -131,7 +147,8 @@
                         {{-- Begin Tab side --}}
                         <div class="Tabside">
                             <ul>
-                                <li><a href="#" class="text-dark tabLink activeLink" id="cont-1">Mission</a></li>
+                                <li><a href="#" class="text-dark tabLink activeLink" id="cont-1">Mission</a>
+                                </li>
                                 <li><a href="#" class="text-dark tabLink" id="cont-2">vision</a></li>
                                 <li><a href="#" class="text-dark tabLink" id="cont-3">Values</a></li>
                             </ul>
@@ -162,7 +179,8 @@
                                         <figure><img src="{{ asset('images/vision.jpg') }}" alt="image"></figure>
                                     </div>
                                     <div class="img2">
-                                        <figure><img src="{{ asset('images/augst 002.jpg') }}" alt="image"></figure>
+                                        <figure><img src="{{ asset('images/augst 002.jpg') }}" alt="image">
+                                        </figure>
                                     </div>
                                 </div>
                                 <div class="Description">
@@ -188,7 +206,8 @@
                                     <h3>Our Core Values</h3>
                                     <p><span>Integrity:</span> Honesty and strong moral principles.</p>
                                     <p><span>Customer Satisfaction:</span> Exceed customer expectations.</p>
-                                    <p><span>Professionalism:</span> Skill, good judgement and individual adherence to the
+                                    <p><span>Professionalism:</span> Skill, good judgement and individual adherence to
+                                        the
                                         set
                                         standards.</p>
                                     <p><span>Innovation:</span> Take pro-active steps to drive performance.</p>
@@ -497,7 +516,7 @@
 
         {{-- TIMELINE --}}
         <section id="timeline">
-            <div class="container-fluid py-5">
+            <div class="container-fluid py-5 wow fadeIn">
                 <div class="container py-5">
                     <div class="row align-items-end mb-4 timeline-head">
                         <div class="col-lg-6">
@@ -518,16 +537,12 @@
                                             </div>
                                             <div
                                                 class="timeline-social d-flex flex-column align-items-center justify-content-center">
-                                                <a class="btn btn-secondary btn-social mb-2"
+                                                <a target="_blank" class="btn btn-secondary btn-social mb-2"
                                                     href="https://twitter.com/CubeEngineers?s=20&t=YOPh578w5sA3VX3KHRhieg"><i
                                                         class="fab fa-twitter"></i></a>
-                                                <a class="btn btn-secondary btn-social mb-2"
+                                                <a target="_blank" class="btn btn-secondary btn-social mb-2"
                                                     href="https://www.linkedin.com/company/cube-engineering-and-general-supplies-limited/"><i
                                                         class="fab fa-linkedin-in"></i></a>
-                                                <a href="" class="btn btn-secondary btn-social mb-2"><i
-                                                        class="fab fa-facebook-f"></i></a>
-                                                <a href="mailto:cubeengineeringlimited@gmail.com" class="btn btn-secondary btn-social mb-2"><i
-                                                        class="fa fa-envelope"></i></a>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column timeline-text text-center py-4">

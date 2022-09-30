@@ -43,12 +43,9 @@
                                             <li>
                                                 <a href="{{ route('messages.show', $message->id) }}"
                                                     class="dropdown-item">View</a>
-                                                <form action="{{ route('messages.destroy', $message->id) }}" class="w-100"
-                                                    method="POST" style="display: inline-block">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item">Delete</button>
-                                                </form>
+                                            </li>
+                                            <li>
+                                                <a href="" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteRecord">Delete</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -63,6 +60,7 @@
     @if (Request::is('messages/*'))
         {{-- display message --}}
         <div class="container-fluid mt-4 px-4">
+            <div class="text-success fs-1">Message View</div>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between">
                     <div>
@@ -108,7 +106,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="message" class="mb-3">Message</label>
-                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control" disabled>{{ $message->message }}</textarea>
+                                    <textarea name="message" id="message" cols="30" rows="10" class="form-control" disabled>{!! $message->message !!}</textarea>
                                 </div>
                             </div>
                         </div>

@@ -27,7 +27,7 @@
         <label for="comments" class="form-label">Comments</label>
         <textarea class="form-control" id="comments" name="comments">
             @if (Request::is('testimonials/*/edit'))
-{{ $Testimonial->comments }}
+{!! $Testimonial->comments !!}
 @endif
         </textarea>
         @error('comments')
@@ -39,7 +39,10 @@
         <input type="file" class="form-control" name="image" id="testimonialimage">
     </div>
     @if (Request::is('testimonials/*/edit'))
-        <button type="submit" class="btn btn-success">Update Testimonial</button>
+        <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-success">Update Testimonial</button>
+            <a href="{{ route('testimonials.create') }}" class="btn btn-secondary">Undo</a>
+        </div>
     @else
         <button type="submit" class="btn btn-primary">Upload Testimonial</button>
     @endif

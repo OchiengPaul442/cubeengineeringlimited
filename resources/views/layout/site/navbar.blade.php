@@ -14,8 +14,8 @@
                         <ul class="navbar-nav" id="navbar-item-tracker">
                             <a href="#home" class="nav-item nav-link">Home</a>
                             <a href="#about" class="nav-item nav-link">About</a>
-                            <a href="#services" class="nav-item nav-link">Service</a>
-                            <a href="#portfolio" class="nav-item nav-link">Project</a>
+                            <a href="#services" class="nav-item nav-link">Services</a>
+                            <a href="#portfolio" class="nav-item nav-link">Projects</a>
                             <a href="#FAQs" class="nav-item nav-link">FAQs</a>
                             <a href="#contact" id="contact-btn-nav-1" class="nav-item nav-link">Contact</a>
                             <a href="#partners" class="nav-item nav-link">Partners</a>

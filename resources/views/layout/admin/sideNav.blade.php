@@ -37,7 +37,7 @@
                     </a>
                     <a class="nav-link" href="{{ route('FAQs.create') }}">FAQs
                     </a>
-                    <a class="nav-link" href="{{ route('portfolio.create') }}">Projects</a>
+                    <a class="nav-link" href="{{ route('portfolio.create') }}">Portfolio</a>
                     <a class="nav-link" href="{{ route('testimonials.create') }}">Testimonials</a>
                 </nav>
             </div>

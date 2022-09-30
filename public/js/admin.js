@@ -14,6 +14,11 @@ $(document).ready(function () {
     $("#servicesTable").DataTable();
     $("#messagesTable").DataTable();
     $("#FAQsTable").DataTable();
+
+    // hide notifications after 2s
+    setTimeout(function () {
+        $('#notification_message').hide(200);
+    }, 2500);
 });
 
 window.addEventListener("DOMContentLoaded", function (event) {

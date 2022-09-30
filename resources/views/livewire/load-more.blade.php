@@ -19,10 +19,17 @@
                 <button wire:click="loadmore()" class="btn btn-primary" id="loadMore">Load More</button>
             </div>
         @else
-            {{-- no more data --}}
-            <div class="d-flex justify-content-center mt-5 mb-4 addmorebtn">
-                <button wire:click="loadless()" class="btn btn-primary" id="loadMore">No More Data</button>
-            </div>
+            @if ($services->count() > 4)
+                {{-- load less data --}}
+                <div class="d-flex justify-content-center mt-5 mb-4 addmorebtn">
+                    <button wire:click="loadless()" class="btn btn-primary" id="loadMore">Load Less</button>
+                </div>
+            @else
+                {{-- no more data --}}
+                <div class="d-flex justify-content-center mt-5 mb-4 addmorebtn">
+                    <button class="btn btn-primary">No more Data</button>
+                </div>
+            @endif
         @endif
     </div>
 </div>

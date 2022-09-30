@@ -2,6 +2,18 @@
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6KEWR7KK8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D6KEWR7KK8');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -10,14 +22,14 @@
     {{-- bootstarp css --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         type="text/css">
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}" type="text/css">
     {{-- lib css --}}
-    <link rel="stylesheet" href="{{ asset('lib/flaticon/font/flaticon.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('lib/owlcarousel/assets/owl.carousel.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('lib/lightbox/css/lightbox.min.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('lib/slick/slick.css') }}" type="text/css">
-    <link rel="stylesheet" href="{{ asset('lib/slick/slick-theme.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/flaticon/font/flaticon.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/animate/animate.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/owlcarousel/assets/owl.carousel.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/lightbox/css/lightbox.min.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/slick/slick.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('/lib/slick/slick-theme.css') }}" type="text/css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,7 +61,7 @@
         </div>
 
         {{-- main content --}}
-        <div class="main_content">
+        <div class="main_content container">
             <h1>Privacy Policy</h1>
             <p>Last updated: September 21, 2022</p>
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
@@ -348,31 +360,29 @@
 
         {{-- footer section --}}
         @include('layout.site.footer')
+        
+        {{-- loader --}}
+        @include('components.loaders.main')
+
+        {{-- floating call button --}}
+        <span class="floating-call-btn">
+            <a href="tel:+256776024658">
+                <i class="fa fa-phone my-float"></i>
+            </a>
+        </span>
+        {{-- end of floating call button --}}
 
         {{-- back to top button --}}
         @include('components.Button.scrolltotop')
     </div>
 
 
-    {{-- floating call button --}}
-    <section>
-        <span class="floating-call-btn">
-            <a href="tel:+256776024658">
-                <i class="fa fa-phone my-float"></i>
-            </a>
-        </span>
-    </section>
-    {{-- end of floating call button --}}
-
-
-    {{-- loader --}}
-    @include('components.loaders.main')
-
     {{-- js links --}}
-    <script src="{{ asset('js/app.js') }}"></script>
-    <script src="{{ asset('lib/wow/wow.min.js') }}"></script>    
-    <script src="{{ asset('lib/slick/slick.min.js') }}"></script>
-</body>
+    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('/lib/easing/easing.min.js') }}"></script>
+    <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>
+    <script src="{{ asset('/lib/slick/slick.min.js') }}"></script>
 </body>
 
 </html>

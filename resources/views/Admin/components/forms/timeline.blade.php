@@ -23,14 +23,17 @@
             <div class="text-danger">{{ $message }}</div>
         @enderror
     </div>
-    <div class="mb-3">        
+    <div class="mb-3">
         <label class="mb-2">Image Upload</label>
         <input type="file" class="" name="image" id="timelineimage">
     </div>
 
 
     @if (Request::is('timeline/*/edit'))
-        <button type="submit" class="btn btn-success">Update timeline</button>
+        <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-success">Update timeline</button>
+            <a href="{{route('timeline.create')}}" class="btn btn-secondary">Undo</a>
+        </div>
     @else
         <button type="submit" class="btn btn-primary">Upload timeline</button>
     @endif

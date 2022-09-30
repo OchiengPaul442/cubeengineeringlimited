@@ -3,6 +3,8 @@
 @section('content')
     {{-- portfolio --}}
     <div class="container-fluid mt-4 px-4">
+        {{-- notification --}}
+        @include('Admin.components.errors.notifications')
         <div class="text-success fs-1 mb-2 text-capitalize">portfolio data</div>
         <div class="card mb-4">
             <div class="card-header">
@@ -26,9 +28,17 @@
                             <tr>
                                 <td>{{ $portfolios->name }}</td>
                                 <td>
-                                    {{ Str::limit($portfolios->description, 40) }}
+                                    {{ Str::limit($portfolios->about, 40) }}
                                 </td>
-                                <td>{{ $portfolios->status }}</td>
+                                <td>
+                                    @if ($portfolios->status == 'Complete')
+                                        <span class="badge text-bg-success">{{ $portfolios->status }}</span>
+                                    @elseif ($portfolios->status == 'Running')
+                                        <span class="badge text-bg-warning">{{ $portfolios->status }}</span>
+                                    @else
+                                        <span class="badge text-bg-secondary">{{ $portfolios->status }}</span>
+                                    @endif                                    
+                                </td>
                                 <td>
                                     {{ Str::limit($portfolios->image, 40) }}
                                 </td>
@@ -42,12 +52,8 @@
                                             <li><a href="{{ route('portfolio.edit', $portfolios->id) }}"
                                                     class="dropdown-item">Edit</a></li>
                                             <li>
-                                                <form action="{{ route('portfolio.destroy', $portfolios->id) }}"
-                                                    class="w-100" method="POST" style="display: inline-block">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item">Delete</button>
-                                                </form>
+                                                <a href="" class="dropdown-item" data-bs-toggle="modal"
+                                                    data-bs-target="#deleteRecord">Delete</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -60,8 +66,6 @@
         </div>
     </div>
     <div class="container-fluid mt-4 px-4">
-        {{-- notifications --}}
-        @include('Admin.components.errors.notifications')
         <div class="text-success fs-1">Upload Company Projects for site!</div>
         @include('Admin.components.forms.porfolio')
     </div>

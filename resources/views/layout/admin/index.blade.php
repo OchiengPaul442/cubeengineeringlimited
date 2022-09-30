@@ -1,14 +1,26 @@
 @php
-    if(!session()->has('userID')){
-        header('Location: /login');
-        exit;
-    }
+if (!session()->has('userID')) {
+    header('Location: /login');
+    exit();
+}
 @endphp
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-D6KEWR7KK8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+
+        gtag('config', 'G-D6KEWR7KK8');
+    </script>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -16,7 +28,7 @@
     <title>{{ $title }}</title>
     {{-- favicon --}}
     <link rel="shortcut icon" href="{{ asset('images/Group1.png') }}" type="image/x-icon">
-    <link href="{{ asset('css/admin.css) }}" rel="stylesheet" />
+    <link href="{{ asset('css/admin.css') }}" rel="stylesheet" />
     {{-- filepond --}}
     <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
     {{-- bootstrap css --}}
@@ -55,9 +67,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     {{-- filepond plugin --}}
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
-        {{-- ckeditor --}}
+    {{-- ckeditor --}}
     <script src="https://cdn.ckeditor.com/4.19.1/standard/ckeditor.js"></script>
-    {{-- chart js --}}    
+    {{-- chart js --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     @yield('scripts')
     @yield('scripts2')

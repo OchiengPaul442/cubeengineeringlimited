@@ -5,17 +5,17 @@
                 <div class="footer-contact">
                     <h2>Office Contact</h2>
                     <p class="text-uppercase"><i class="fa fa-map-marker-alt"></i>Blue Heights, Level 3 Nkrumah Rd</p>
-                    <p class="text-uppercase"><i class="fa fa-phone-alt"></i>+256 776024658</p>
-                    <p class="text-uppercase"><i class="fa fa-phone-alt"></i>+256774764199</p>
-                    <p class="text-uppercase"><i class="fa fa-phone-alt"></i>+256708881648</p>
+                    <p class="text-uppercase"><a href="tel:+256 776024658"><i class="fa fa-phone-alt"></i>+256 776024658</a></p>
+                    <p class="text-uppercase"><a href="tel:+256774764199"><i class="fa fa-phone-alt"></i>+256774764199</a></p>
+                    <p class="text-uppercase"><a href="tel:+256708881648"><i class="fa fa-phone-alt"></i>+256708881648</a></p>
                     <p class=""><a href="mailto:cubeengineeringlimited@gmail.com"><i class="fa fa-envelope"></i>cubeengineeringlimited@gmail.com</a></p>
                     <div class="footer-social">
-                        <a href="https://twitter.com/CubeEngineers?s=20&t=YOPh578w5sA3VX3KHRhieg"><i
+                        <a target="_blank" href="https://twitter.com/CubeEngineers?s=20&t=YOPh578w5sA3VX3KHRhieg"><i
                                 class="fab fa-twitter"></i></a>
-                        <a href="https://mail.google.com"><i class="fa fa-envelope"></i></a>
-                        <a href="https://www.linkedin.com/company/cube-engineering-and-general-supplies-limited/"><i class="fab fa-linkedin-in"></i></a>
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href=""><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.linkedin.com/company/cube-engineering-and-general-supplies-limited/"><i class="fab fa-linkedin-in"></i></a>
+                        <a target="_blank" href="https://mail.google.com"><i class="fa fa-envelope"></i></a>
+                        {{-- <a href=""><i class="fab fa-facebook-f"></i></a>
+                        <a href=""><i class="fab fa-instagram"></i></a> --}}
                     </div>
                 </div>
             </div>

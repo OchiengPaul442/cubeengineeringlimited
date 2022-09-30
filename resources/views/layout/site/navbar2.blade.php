@@ -15,8 +15,8 @@
                         <ul class="navbar-nav text-center">
                             <a href="{{ route('home') }}" class="nav-item nav-link">Home</a>
                             <a href="{{ route('home') }}" class="nav-item nav-link">About</a>
-                            <a href="{{ route('home') }}" class="nav-item nav-link">Service</a>
-                            <a href="{{ route('home') }}" class="nav-item nav-link">Project</a>
+                            <a href="{{ route('home') }}" class="nav-item nav-link">Services</a>
+                            <a href="{{ route('home') }}" class="nav-item nav-link">Projects</a>
                             <a href="{{ route('home') }}" class="nav-item nav-link">FAQs</a>
                             <a href="{{ route('home') }}" id="contact-btn-nav-1" class="nav-item nav-link">Contact</a>
                             <a href="{{ route('home') }}" class="nav-item nav-link">Partners</a>

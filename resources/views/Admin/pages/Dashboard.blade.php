@@ -6,16 +6,6 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
-        {{-- display success message --}}
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @elseif (session('fail'))
-            <div class="alert alert-danger">
-                {{ session('fail') }}
-            </div>
-        @endif
         {{-- overview tabs --}}
         <div class="row">
             <div class="col-xl-3 col-md-6">

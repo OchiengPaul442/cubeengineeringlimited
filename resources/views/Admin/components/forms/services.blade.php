@@ -31,7 +31,7 @@
         <label for="details" class="form-label">Details</label>
         <textarea class="form-control" id="details" name="details" style="height:150px;max-height: 200px">
             @if (Request::is('services/*/edit'))
-{{ $service->details }}
+{!! $service->details !!}
 @endif
         </textarea>
         @error('details')
@@ -47,7 +47,10 @@
         </div>
     </div>
     @if (Request::is('services/*/edit'))
-        <button type="submit" class="btn btn-success">Update service</button>
+    <div class="d-flex gap-3">
+            <button type="submit" class="btn btn-success">Update service</button>
+            <a href="{{route('services.create')}}" class="btn btn-secondary">Undo</a>
+        </div>
     @else
         <button type="submit" class="btn btn-primary">Upload service</button>
     @endif

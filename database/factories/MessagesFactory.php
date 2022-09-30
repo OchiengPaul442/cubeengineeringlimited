@@ -17,7 +17,10 @@ class MessagesFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'subject' => $this->faker->sentence(),
+            'message' => $this->faker->paragraph(),
         ];
     }
 }
