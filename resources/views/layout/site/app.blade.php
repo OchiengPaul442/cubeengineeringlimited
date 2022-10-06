@@ -23,7 +23,7 @@
     {{-- bootstarp css --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         type="text/css">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css">
     {{-- lib css --}}
     <link rel="stylesheet" href="{{ asset('lib/flaticon/font/flaticon.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('lib/animate/animate.min.css') }}" type="text/css">
@@ -95,6 +95,7 @@
         {{-- about section --}}
         <section id="about">
             <div class="about-container-wrapper">
+                {{-- <img src="{{ asset('images/DJI_0457_3.jpg') }}" class="absolute" alt=""> --}}
                 <div id="about" class="about wow fadeInUp" data-wow-delay="0.1s">
                     <div class="container">
                         <div class="row align-items-center">
@@ -594,7 +595,7 @@
     {{-- js links --}}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="{{ asset('lib/wow/wow.min.js') }}"></script>
     <script src="{{ asset('lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('lib/lightbox/js/lightbox.min.js') }}"></script>

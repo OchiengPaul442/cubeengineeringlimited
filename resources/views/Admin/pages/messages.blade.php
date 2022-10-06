@@ -22,7 +22,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- display all projects --}}
+                        {{-- display all messages --}}
                         @foreach ($messages as $message)
                             <tr>
                                 <td>{{ $message->name }}</td>
@@ -60,7 +60,12 @@
     @if (Request::is('messages/*'))
         {{-- display message --}}
         <div class="container-fluid mt-4 px-4">
-            <div class="text-success fs-1">Message View</div>
+            <div class="d-flex justify-content-between p-2 align-items-center">
+                <div class="text-success fs-1">Message View</div>
+                <div>
+                    <a href="{{ route('messages.index') }}" class="btn btn-sm btn-secondary">close view</a>
+                </div>
+            </div>
             <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between">
                     <div>

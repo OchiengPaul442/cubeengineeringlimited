@@ -21,7 +21,7 @@
     {{-- bootstarp css --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         type="text/css">
-    <link rel="stylesheet" href="{{ asset('/css/app.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ asset('css/index.css') }}" type="text/css">
     {{-- lib css --}}
     <link rel="stylesheet" href="{{ asset('/lib/flaticon/font/flaticon.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('/lib/animate/animate.min.css') }}" type="text/css">
@@ -215,7 +215,7 @@
     
 
     {{-- js links --}}
-    <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('/lib/easing/easing.min.js') }}"></script>
     <script src="{{ asset('/lib/wow/wow.min.js') }}"></script>

@@ -296,7 +296,7 @@
         <div class="hero-text">
             <img src="{{ asset('images/Group1.png') }}" class="fostrap-logo" width="100px" alt="">
             <h3>Welcome to</h3>
-            <h1>CUBE ENGINEERING <br> AND GENERAL SUPPLIES LTD</h1>
+            <h1>CUBE ENGINEERING <br> <span class="fs-3 text-danger">AND GENERAL SUPPLIES LTD</span></h1>
             <div class="centerer">
                 <div class="wrap">
                     <a class="btn-5" href="{{ route('home') }}">Visit Us</a>
