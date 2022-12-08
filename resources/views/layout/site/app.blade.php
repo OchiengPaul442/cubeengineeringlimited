@@ -487,27 +487,22 @@
                 <div class="text-center">
                     <div class="row align-items-center">
                         <div class="col">
-                            <img width="280px" src="{{ asset('images/Strabag.svg.png') }}" alt="partner-logos">
+                            <img width="280px" src="{{ asset('images/Picture1.png') }}" alt="partner-logos">
                         </div>
                         <div class="col">
-                            <img width="280px" src="{{ asset('images/image 4.svg') }}" alt="partner-logos">
+                            <img width="280px" src="{{ asset('images/Picture3.png') }}" alt="partner-logos">
                         </div>
                         <div class="col">
-                            <img width="280px" src="{{ asset('images/image 5.svg') }}" alt="partner-logos">
+                            <img width="280px" src="{{ asset('images/Picture4.png') }}" alt="partner-logos">
+                        </div>                        
+                        <div class="col">
+                            <img width="280px" src="{{ asset('images/Picture5.png') }}" alt="partner-logos">
+                        </div>                        
+                        <div class="col">
+                            <img width="280px" src="{{ asset('images/Picture2.png') }}" alt="partner-logos">
                         </div>
                         <div class="col">
-                            <img width="280px" src="{{ asset('images/image 6.svg') }}" alt="partner-logos">
-                        </div>
-
-                        <div class="col">
-                            <img width="280px" src="{{ asset('images/image 7.svg') }}" alt="partner-logos">
-                        </div>
-
-                        <div class="col">
-                            <img width="280px" src="{{ asset('images/image 9.svg') }}" alt="partner-logos">
-                        </div>
-                        <div class="col">
-                            <img width="280px" src="{{ asset('images/image 8.svg') }}" alt="partner-logos">
+                            <img width="280px" src="{{ asset('images/Picture6.png') }}" alt="partner-logos">
                         </div>
                     </div>
                 </div>
