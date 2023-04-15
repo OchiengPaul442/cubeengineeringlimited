@@ -6,6 +6,9 @@ use App\Models\messages;
 use App\Http\Requests\StoremessagesRequest;
 use App\Http\Requests\UpdatemessagesRequest;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 class MessagesController extends Controller
 {
     /**
@@ -71,7 +74,7 @@ class MessagesController extends Controller
         $title = 'Mail Edit-Cube Engineering and General supplies Limited';
         $message = messages::find($id);
         $messages = messages::all();
-        return view('Admin.pages.messages', compact('title', 'message', 'messages'));       
+        return view('Admin.pages.messages', compact('title', 'message', 'messages'));
     }
 
     /**
@@ -109,4 +112,5 @@ class MessagesController extends Controller
         $message->delete();
         return redirect()->back()->with('success', 'Message deleted successfully!');
     }
+
 }
